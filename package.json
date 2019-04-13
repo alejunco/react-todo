@@ -3,15 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "normalize.css": "^8.0.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-jss": "^8.6.1",
     "react-scripts": "2.1.8"
   },
   "devDependencies": {
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-airbnb-base": "^13.1.0",
+    "normalize.css": "^8.0.1",
     "prop-types": "^15.7.2",
     "styled-components": "^4.2.0"
   },
