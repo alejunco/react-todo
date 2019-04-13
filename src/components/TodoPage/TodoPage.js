@@ -1,52 +1,17 @@
-import React,{useState} from 'react'
-import withStyle from 'react-jss'
+import React from 'react'
 
-const styles = {
-    root:{
-        display:'flex',
-        flexDirection: 'column',
-        alignItems: 'center'
-    }
-}
-function TodoPage(props){
-    const [newTodo, setNewTodo] = useState('')
-    const [todos, setTodos] = useState([])
-    const {classes} = props
+import AddTodoForm from 'components/Todo/AddTodoForm'
+import TodoList from 'components/Todo/TodoList'
 
-    function handleNewTodoChange(e){
-        e.preventDefault()
-        setNewTodo(e.target.value)
-    }
+import Styled from './styles'
 
-    function handleNewTodo(e){
-        e.preventDefault()
-        if(newTodo !== '')
-        setTodos([...todos,{id:Date.now, description:newTodo, complete:false}])
-        setNewTodo('')
-        e.target.reset()
-    }
-
-    return (
-        <div className={classes.root}>
-            <div>
-                <h1>Today</h1>
-            </div>
-            <div>
-                <form onSubmit={handleNewTodo}>
-                    <input value={newTodo} placeholder={'Add Todo'} onChange={handleNewTodoChange}/>
-                </form>
-            </div>
-            <div>
-                <ul>
-                    {
-                        todos.map(todo=>(
-                            <li>{todo.description}</li>
-                        ))
-                    }
-                </ul>
-            </div>
-        </div>
-    )
+function TodoPage() {
+  return (
+    <Styled.Container>
+      <AddTodoForm />
+      <TodoList />
+    </Styled.Container>
+  )
 }
 
-export default withStyle(styles)(TodoPage)
+export default TodoPage
