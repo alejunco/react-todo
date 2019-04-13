@@ -5,7 +5,7 @@ import { TodosContext } from 'contexts/TodosContext'
 
 function TodoItem(props) {
   const { id, description, isCompleted } = props
-  const { toggleTodoComplete } = useContext(TodosContext)
+  const { toggleTodoComplete, removeTodo } = useContext(TodosContext)
 
   function handleTodoCompleteChange() {
     toggleTodoComplete(id)
@@ -15,6 +15,7 @@ function TodoItem(props) {
     <div>
       <input type={'checkbox'} checked={isCompleted} onChange={handleTodoCompleteChange} />
       <span>{description}</span>
+      <button type={'button'} onClick={() => removeTodo(id)}>Remove</button>
     </div>
   )
 }

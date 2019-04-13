@@ -16,6 +16,15 @@ function TodosProvider(props) {
     setTodos((prevTodos) => ([...prevTodos, newTodo]))
   }
 
+  function removeTodo(id) {
+    const shallowTodos = [...todos]
+    const index = shallowTodos.findIndex((item) => item.id === id)
+    if (index !== -1) {
+      shallowTodos.splice(index, 1)
+      setTodos([...shallowTodos])
+    }
+  }
+
   function toggleTodoComplete(id) {
     const index = todos.findIndex((item) => item.id === id)
     const shallowTodos = [...todos]
@@ -28,6 +37,7 @@ function TodosProvider(props) {
       value={{
         todos,
         addTodo,
+        removeTodo,
         toggleTodoComplete,
       }}
     >
