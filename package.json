@@ -8,10 +8,15 @@
     "react-scripts": "2.1.8"
   },
   "devDependencies": {
+    "@ant-design/icons": "^1.2.1",
+    "@ant-design/icons-react": "^1.1.5",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "normalize.css": "^8.0.1",
     "prop-types": "^15.7.2",
+    "react-router": "^5.0.0",
+    "react-router-dom": "^5.0.0",
+    "react-testing-library": "^6.1.2",
     "styled-components": "^4.2.0"
   },
   "scripts": {
