@@ -8,8 +8,8 @@ import Styled from './styles'
 function TodoPage() {
   return (
     <Styled.Container>
-      <AddTodoForm />
       <TodoList />
+      <AddTodoForm />
     </Styled.Container>
   )
 }

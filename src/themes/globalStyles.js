@@ -8,6 +8,9 @@ const GlobalStyle = createGlobalStyle`
     color: ${({ theme }) => theme.fontColor};
     background-color:${({ theme }) => theme.backgroundColor};
   }
+  ul {
+    list-style-type: none;
+  }
 `
 
 export default GlobalStyle
