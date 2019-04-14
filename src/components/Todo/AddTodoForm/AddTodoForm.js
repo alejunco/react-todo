@@ -1,6 +1,5 @@
 import React, { useState, useContext } from 'react'
 import { TodosContext } from 'contexts/TodosContext'
-// import TodoItem from './node_modules/components/Todo/TodoItem'
 
 function AddTodoForm() {
   const [newTodo, setNewTodo] = useState('')

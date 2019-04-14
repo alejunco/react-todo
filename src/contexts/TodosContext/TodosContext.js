@@ -5,11 +5,12 @@ export const TodosContext = React.createContext()
 
 function TodosProvider(props) {
   const [todos, setTodos] = useState(
-    JSON.parse(localStorage.getItem('todos')) || []
+    JSON.parse(localStorage.getItem('todos')) || props.todos
   )
 
   useEffect(() => {
     localStorage.setItem('todos', JSON.stringify(todos))
+    props.onTodosChange(todos)
   }, [todos])
 
   function addTodo(newTodo) {
@@ -47,7 +48,14 @@ function TodosProvider(props) {
 }
 
 TodosProvider.propTypes = {
-  children: PropTypes.any,
+  todos:         PropTypes.array,
+  children:      PropTypes.any,
+  onTodosChange: PropTypes.func,
+}
+
+TodosProvider.defaultProps = {
+  todos: [],
+  onTodosChange() {},
 }
 
 export default TodosProvider
