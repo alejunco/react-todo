@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { BrowserRouter as Router } from 'react-router-dom'
 
 import Routes from 'components/Routes'
+import Checkbox from 'components/Shared/Checkbox'
 import Collapse, { Panel } from 'components/Shared/Collapse'
 
 const TopBar = styled.div`
@@ -31,7 +32,7 @@ const AppHolder = styled.div`
 const Sidebar = styled.div`
     user-select: none !important;
     float: left;
-    width: 265px;
+    width: 255px;
     height: 100%;
     padding-left: 30px;
     padding-top: 50px;
@@ -51,6 +52,10 @@ const Content = styled.div`
     padding-bottom: 85px !important;
 `
 
+const FiltersSetion = styled.div`
+  padding:10px 8px 20px 8px;
+`
+
 function DefaultLayout() {
   return (
     <Router>
@@ -60,38 +65,10 @@ function DefaultLayout() {
       <AppHolder>
         <Sidebar>
           <Collapse defaultActiveKey={['1', '2']}>
-            <Panel header={'Alligator Mississippiensis'} key={'1'}>
-              <p>
-                <strong>Common Name:</strong>
-                American Alligator
-              </p>
-              <p>
-                <strong>Distribution:</strong>
-                {' '}
-Texas to North Carolina, US
-              </p>
-              <p>
-                <strong>Endangered Status:</strong>
-                {' '}
-Currently Not Endangered
-              </p>
-            </Panel>
-            <Panel header={'Alligator Sinensis'} key={2}>
-              <p>
-                <strong>Common Name:</strong>
-                {' '}
-Chinese Alligator
-              </p>
-              <p>
-                <strong>Distribution:</strong>
-                {' '}
-Eastern China
-              </p>
-              <p>
-                <strong>Endangered Status:</strong>
-                {' '}
-Critically Endangered
-              </p>
+            <Panel header={'Filters'} key={'1'}>
+              <FiltersSetion>
+                <Checkbox type={'checkbox'} label={'Pending'} />
+              </FiltersSetion>
             </Panel>
           </Collapse>
         </Sidebar>

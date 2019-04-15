@@ -6,13 +6,14 @@ import { RightOutline } from '@ant-design/icons'
 import AntdIcon from '@ant-design/icons-react'
 import PanelContent from '../PanelContent'
 
-const Styled = {
-  IconContainer: styled.span`
-    display: inline-block;
-    transform:${(props) => props.isActive ? 'rotateZ(90deg)' : null};
-    transition: transform .15s cubic-bezier(0.65, 0.05, 0.36, 1);  
-  `,
-}
+const IconContainer = styled.span`
+  display: inline-block;
+  transform:${(props) => props.isActive ? 'rotateZ(90deg)' : null};
+  transition: transform .15s cubic-bezier(0.65, 0.05, 0.36, 1);  
+`
+const PanelHeader = styled.span`
+  margin-left:1em;
+`
 
 class CollapsePanel extends Component {
   handleItemClick = () => {
@@ -48,8 +49,8 @@ class CollapsePanel extends Component {
           aria-expanded={`${isActive}`}
           onKeyPress={this.handleKeyPress}
         >
-          <Styled.IconContainer isActive={isActive}><AntdIcon type={RightOutline} /></Styled.IconContainer>
-          {header}
+          <IconContainer isActive={isActive}><AntdIcon type={RightOutline} /></IconContainer>
+          <PanelHeader>{header}</PanelHeader>
         </div>
         <PanelContent
           isActive={isActive}

@@ -23,6 +23,19 @@ const InitialSection = styled.div`
   align-items: center;
 `
 
+const FinalSection = styled.div`
+  border-radius: 6px;
+  padding: 3px;
+  cursor:pointer;
+  transition-duration: 0.3s;
+  transition-property: transform;
+  &:hover {
+    transform: scale(1.2);
+    background: #de4c4a;
+    box-shadow: -27px 26px 6px -23px rgba(0, 0, 0, 0.39);
+  };
+`
+
 const Checker = styled(Checkbox)`
   padding-right:1em
 `
@@ -32,6 +45,7 @@ const ItemContent = styled.span`
   word-wrap: break-word;
   word-break: break-word;
   line-height: 18px;
+  text-decoration: ${({ lineThrough }) => lineThrough ? 'line-through' : ''}
 `
 function TodoItem(props) {
   const { id, description, isCompleted } = props
@@ -45,12 +59,11 @@ function TodoItem(props) {
     <TodoItemContainer>
       <InitialSection>
         <Checker type={'checkbox'} checked={isCompleted} onChange={handleTodoCompleteChange} />
-        <ItemContent>{description}</ItemContent>
+        <ItemContent lineThrough={isCompleted}>{description}</ItemContent>
       </InitialSection>
-      <div>
-        {/* <button type={'button'} onClick={() => removeTodo(id)}>Remove</button> */}
+      <FinalSection>
         <AntdIcon type={DeleteOutline} onClick={() => removeTodo(id)} />
-      </div>
+      </FinalSection>
     </TodoItemContainer>
   )
 }

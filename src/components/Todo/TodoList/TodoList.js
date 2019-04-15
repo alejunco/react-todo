@@ -18,12 +18,24 @@ const ListItem = styled.li`
   border-radius: 3px;
 `
 
-function TodoList() {
+const TodoListHeader = styled.h2`
+  font-size: 14px;
+  padding: 0 6px;
+  font-weight: bold;
+  color: #de4c4a;
+  border-bottom: 1px solid #f0f0f0c4;
+  padding-bottom: .7em;
+  margin-bottom: 0;
+`
+
+function TodoList(props) {
   const { todos } = useContext(TodosContext)
+  const { header, filter } = props
   return (
     <List>
+      {header ? <TodoListHeader>{header}</TodoListHeader> : null}
       {
-        todos.map((todo) => (
+        todos.filter(filter).map((todo) => (
           <ListItem key={todo.id}>
             <TodoItem {...todo} />
           </ListItem>

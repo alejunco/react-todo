@@ -8,8 +8,9 @@ import Styled from './styles'
 function TodoPage() {
   return (
     <Styled.Container>
-      <TodoList />
+      <TodoList header={'Pending'} filter={(todo) => !todo.isCompleted} />
       <AddTodoForm />
+      <TodoList header={'Completed'} filter={(todo) => todo.isCompleted} />
     </Styled.Container>
   )
 }

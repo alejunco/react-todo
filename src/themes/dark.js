@@ -1,5 +1,5 @@
 const theme = {
-  primary:         '#ff0198',
+  primary:         '#db4c3f',
   secondary:       '#01c1d6',
   danger:          '#e50000',
   fontHeader:      'Old Standard TT, sans, sans-serif',

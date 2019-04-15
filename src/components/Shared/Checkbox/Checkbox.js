@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 const CheckboxContainer = styled.div`
+  cursor:pointer;
   display: inline-block;
   vertical-align: middle;
   padding-right: 1em;
@@ -31,6 +32,7 @@ const HiddenCheckbox = styled.input.attrs({ type: 'checkbox' })`
 
 const StyledCheckbox = styled.div`
   display: inline-block;
+  vertical-align: bottom;
   margin: 0;
   padding: 0;
   width: 16px;
@@ -38,9 +40,15 @@ const StyledCheckbox = styled.div`
   border: 1px solid grey;
   border-radius: 3px;
   transition: all 150ms;
+  margin-right: ${({ label }) => label ? '1em' : '0'};
+  transition-duration: 0.2s;
+  transition-property: transform;
+  &:hover {
+    transform: scale(1.2);
+  }
 
   ${HiddenCheckbox}:focus + & {
-    box-shadow: 0 0 0 1px #de4c4a;
+    /* box-shadow: 0 0 0 1px #de4c4a; */
   }
 
   ${Icon} {
@@ -54,7 +62,7 @@ const Checkbox = ({
   <CheckboxContainer>
     <CheckBoxLabel>
       <HiddenCheckbox checked={checked} {...props} />
-      <StyledCheckbox checked={checked}>
+      <StyledCheckbox checked={checked} label={label}>
         <Icon viewBox={'0 0 24 24'}>
           <polyline points={'20 6 9 17 4 12'} />
         </Icon>
