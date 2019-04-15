@@ -6,8 +6,18 @@ import AntdIcon from '@ant-design/icons-react'
 import { TodosContext } from 'contexts/TodosContext'
 
 import Button from 'components/Shared/Button'
+import TextField from 'components/Shared/TextField'
 
-const LinkIcon = styled.span`
+const Container = styled.div`
+  margin-bottom:30px
+`
+const FormControl = styled.div`
+  background-color: #171717 !important;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 3px;
+  margin:8px 0;
+`
+const IconButton = styled.span`
   display: flex;
   align-items: center;
   color: #808080;
@@ -33,37 +43,36 @@ function AddTodoForm() {
     }
 
     setNewTodo('')
-    e.target.reset()
   }
 
   return (
-    editMode
-      ? (
-        <form onSubmit={handleNewTodo}>
-          <div>
-            <input value={newTodo} placeholder={'Add Todo'} onChange={handleNewTodoChange} />
-          </div>
-          <div>
-            <Button type={'button'} onClick={handleNewTodoChange}>
-            Save
-            </Button>
-            <Button type={'button'} variant={'link'} onClick={() => setEditMode(false)}>
-            Cancel
-            </Button>
-          </div>
-
-        </form>
-      ) : (
-        <div>
-          <Button type={'button'} variant={'link'} onClick={() => setEditMode(true)}>
-            <LinkIcon>
-              <AntdIcon type={PlusOutline} />
-            </LinkIcon>
+    <Container>
+      {
+        editMode
+          ? (
+            <form onSubmit={handleNewTodo}>
+              <FormControl>
+                <TextField value={newTodo} onChange={handleNewTodoChange} />
+              </FormControl>
+              <div>
+                <Button type={'button'} onClick={handleNewTodo}>
             Add Task
-          </Button>
-        </div>
-
-      )
+                </Button>
+                <Button type={'button'} variant={'link'} onClick={() => setEditMode(false)}>
+            Cancel
+                </Button>
+              </div>
+            </form>
+          ) : (
+            <Button type={'button'} variant={'link'} onClick={() => setEditMode(true)}>
+              <IconButton>
+                <AntdIcon type={PlusOutline} />
+              </IconButton>
+              Add Task
+            </Button>
+          )
+      }
+    </Container>
   )
 }
 

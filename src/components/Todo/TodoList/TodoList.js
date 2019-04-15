@@ -1,21 +1,14 @@
 import React, { useContext } from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { TodosContext } from 'contexts/TodosContext'
 import TodoItem from 'components/Todo/TodoItem'
 
-const List = styled.ul`
+const StyledTodoList = styled.ul`
   margin: 0;
   margin-bottom: 32px;
   padding: 0;
   list-style-type: none;
-`
-
-const ListItem = styled.li`
-  page-break-inside: avoid;
-  padding: 0 6px 0 6px;
-  font-size: 14px;
-  position: relative;
-  border-radius: 3px;
 `
 
 const TodoListHeader = styled.h2`
@@ -28,21 +21,42 @@ const TodoListHeader = styled.h2`
   margin-bottom: 0;
 `
 
-function TodoList(props) {
+const EmptyListMessage = styled.div`
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
+
+function TodoList({ header, filter, emptyMessage }) {
   const { todos } = useContext(TodosContext)
-  const { header, filter } = props
+  const filtered = todos.filter(filter)
   return (
-    <List>
+    <StyledTodoList>
       {header ? <TodoListHeader>{header}</TodoListHeader> : null}
       {
-        todos.filter(filter).map((todo) => (
-          <ListItem key={todo.id}>
-            <TodoItem {...todo} />
-          </ListItem>
+        filtered.length ? filtered.map((todo) => (
+          <TodoItem key={todo.id} {...todo} />
         ))
+          : (
+            <EmptyListMessage>
+              <h4>{emptyMessage}</h4>
+            </EmptyListMessage>
+          )
       }
-    </List>
+    </StyledTodoList>
   )
+}
+
+TodoList.propTypes = {
+  header:       PropTypes.string,
+  emptyMessage: PropTypes.string,
+  filter:       PropTypes.func,
+}
+
+TodoList.defaultProps = {
+  emptyMessage: 'Nothing here yet',
+  filter() { return true },
 }
 
 export default TodoList
