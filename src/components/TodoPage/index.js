@@ -1,2 +1,1 @@
-import TodoPage from './TodoPage'
-export default TodoPage
+export { default } from './TodoPage'

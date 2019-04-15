@@ -1,2 +1,1 @@
-import AddTodoForm from './AddTodoForm'
-export default AddTodoForm
+export { default } from './AddTodoForm'
