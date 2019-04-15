@@ -19,7 +19,7 @@ jobs:
       # documented at https://circleci.com/docs/2.0/circleci-images/
       # - image: circleci/mongo:3.4.4
 
-    working_directory: ~/repo
+    working_directory: ~/app
 
     steps:
       - checkout
@@ -40,3 +40,16 @@ jobs:
 
       # run tests!
       - run: yarn test
+  eslint:
+    working_directory: ~/app
+    executor: nodejs
+    steps:
+      - attach_workspace:
+          at: ~/app
+      - run:
+          name: Run ESLint
+          command: npm run lint
+workflows:
+  production-workflow:
+    jobs:
+      - eslint:
