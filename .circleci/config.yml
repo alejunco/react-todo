@@ -52,7 +52,15 @@ jobs:
 workflows:
   production-workflow:
     jobs:
+      - dependencies:
+          filters:
+            tags:
+              only: /^v.*/
+            branches:
+              ignore: /.*/
       - eslint:
+        requires:
+            - dependencies
         filters:
             tags:
               only: /^v.*/
