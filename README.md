@@ -4,8 +4,6 @@ Two-Do
 
 ## Available Scripts
 
-In the project directory, you can run:
-
 ### `npm start`
 
 Runs the app in the development mode.<br>
@@ -13,6 +11,18 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.<br>
 You will also see any lint errors in the console.
+
+## Running it with Docker
+
+In the project directory, you can build the app:
+```Docker
+docker build -t react-todo:latest .
+```
+
+And then running it in your local machine:
+```Docker
+docker run -p 3000:80 react-todo:latest
+```
 
 ### `npm test`
 
