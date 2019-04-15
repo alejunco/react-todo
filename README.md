@@ -1,6 +1,6 @@
 Two-Do
 
-![Alt Text](https://cl.ly/60a97fabeb21)
+![Alt Text](https://d1sz9tkli0lfjq.cloudfront.net/items/0y1G2M3Y1M0Y0y0x2T3K/Screen%20Recording%202019-04-15%20at%2010.20%20AM.gif?v=23ce48d3)
 
 ## Available Scripts
 
