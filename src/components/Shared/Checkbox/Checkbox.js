@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 const CheckboxContainer = styled.div`
@@ -20,7 +21,6 @@ const Icon = styled.svg`
 const HiddenCheckbox = styled.input.attrs({ type: 'checkbox' })`
   border: 0;
   clip: rect(0 0 0 0);
-  clippath: inset(50%);
   height: 1px;
   margin: -1px;
   overflow: hidden;
@@ -47,29 +47,33 @@ const StyledCheckbox = styled.div`
     transform: scale(1.2);
   }
 
-  ${HiddenCheckbox}:focus + & {
-    /* box-shadow: 0 0 0 1px #de4c4a; */
-  }
-
   ${Icon} {
     visibility: ${(props) => (props.checked ? 'visible' : 'hidden')}
   }
 `
 
-const Checkbox = ({
-  label, checked, ...props
-}) => (
-  <CheckboxContainer>
-    <CheckBoxLabel>
-      <HiddenCheckbox checked={checked} {...props} />
-      <StyledCheckbox checked={checked} label={label}>
-        <Icon viewBox={'0 0 24 24'}>
-          <polyline points={'20 6 9 17 4 12'} />
-        </Icon>
-      </StyledCheckbox>
-      {label}
-    </CheckBoxLabel>
-  </CheckboxContainer>
-)
+function Checkbox({ label, checked, ...props }) {
+  return (
+    <CheckboxContainer>
+      <CheckBoxLabel>
+        <HiddenCheckbox checked={checked} {...props} />
+        <StyledCheckbox checked={checked} label={label}>
+          <Icon viewBox={'0 0 24 24'}>
+            <polyline points={'20 6 9 17 4 12'} />
+          </Icon>
+        </StyledCheckbox>
+        {label}
+      </CheckBoxLabel>
+    </CheckboxContainer>
+  )
+}
+Checkbox.propTypes = {
+  label:   PropTypes.string,
+  checked: PropTypes.bool,
+}
+
+Checkbox.defaultProps = {
+  checked: false,
+}
 
 export default Checkbox
