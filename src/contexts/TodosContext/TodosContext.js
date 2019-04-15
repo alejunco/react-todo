@@ -8,6 +8,7 @@ function TodosProvider(props) {
     JSON.parse(localStorage.getItem('todos')) || props.todos
   )
 
+
   useEffect(() => {
     localStorage.setItem('todos', JSON.stringify(todos))
     props.onTodosChange(todos)
@@ -33,6 +34,10 @@ function TodosProvider(props) {
     setTodos(shallowTodos)
   }
 
+  const stats = {
+    total:     todos.length,
+    completed: todos.filter((todo) => todo.isCompleted).length,
+  }
   return (
     <TodosContext.Provider
       value={{
@@ -40,6 +45,7 @@ function TodosProvider(props) {
         addTodo,
         removeTodo,
         toggleTodoComplete,
+        stats,
       }}
     >
       {props.children}
